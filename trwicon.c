@@ -1,6 +1,4 @@
-/* Transient Example
- * cc transient.c -o transient -lX11
- */
+/* cc trwicon.c -o trwicon -lX11 */
 
 #include <stdlib.h>
 #include <unistd.h>
