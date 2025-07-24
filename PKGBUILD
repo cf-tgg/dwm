@@ -14,8 +14,8 @@ optdepends=(
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("git+https://github.com/cf-tgg/dwm" "config.h")
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/cf-tgg/dwm")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname" || exit 1

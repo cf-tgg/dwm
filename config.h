@@ -5,8 +5,8 @@
  *  | (_| |\ V  V /| | | | | |
  *   \__,_| \_/\_/ |_| |_| |_|
  *
- *   Time-stamp: <2025-07-18 06:53:13 cf>
- *   Last compiled: 2025-07-07 20:51:26, duration 1.05 s
+ *   Time-stamp: <2025-07-23 23:09:35 cf>
+ *   Last compiled: 2025-17-23 23:08:42, duration 1.15 s
  *   [Linux 6.15.2-zen1-1-zen x86_64 GNU/Linux]
  */
 
@@ -437,11 +437,10 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{MODKEY|ControlMask,  XK_Down}},        spawn,     SHCMD("xrandr --output eDP --rotate normal && walfeh -reset")}),
 
     /* Dynamic Swallows */
-    &((Keychord){1, {{MODKEY, XK_Left}},       spawn,    {.v = (const char *[]){"swallow_left",  NULL}}}),
-    &((Keychord){1, {{MODKEY, XK_Up}},         spawn,    {.v = (const char *[]){"swallow_above", NULL}}}),
-    &((Keychord){1, {{MODKEY, XK_Right}},      spawn,    {.v = (const char *[]){"swallow_right", NULL}}}),
-    &((Keychord){1, {{MODKEY, XK_Down}},       spawn,    {.v = (const char *[]){"swallow_under", NULL}}}),
-
+    &((Keychord){1, {{MODKEY, XK_Left}},       spawn,    {.v = (const char *[]){"swallowleft",  NULL}}}),
+    &((Keychord){1, {{MODKEY, XK_Up}},         spawn,    {.v = (const char *[]){"swallowup", NULL}}}),
+    &((Keychord){1, {{MODKEY, XK_Right}},      spawn,    {.v = (const char *[]){"swallowright", NULL}}}),
+    &((Keychord){1, {{MODKEY, XK_Down}},       spawn,    {.v = (const char *[]){"swallowdown", NULL}}}),
     &((Keychord){1, {{MODKEY|ShiftMask, XK_apostrophe}},      swalstopsel,     {0}}),
 
     /* Alt + [h|j|k|l] dynamic directional swallows */
