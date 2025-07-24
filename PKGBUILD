@@ -18,30 +18,30 @@ source=("git+https://github.com/cf-tgg/dwm" "config.h")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname" || exit 1
+    cd "$_pkgname" || exit 1
     version=$(awk '/^VERSION =/ {print $3}' config.mk)
     count=$(git rev-list --count HEAD)
     short=$(git rev-parse --short HEAD)
-    printf "%s.r%s.%s\n" "$version" "$count" "$short"
+    printf "%s.r%s.%s\n" "${version}" "${count}" "${short}"
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname" || exit 1
-    printf 'CPPFLAGS+=%s\n' "$CPPFLAGS" >> config.mk
-    printf 'CFLAGS+=%s\n' "$CFLAGS" >> config.mk
-    printf 'LDFLAGS+=%s\n' "$LDFLAGS" >> config.mk
-    if [ -f "$srcdir/config.h" ]; then
-        cp "$srcdir/config.h" .
+    cd "$_pkgname" || exit 1
+    printf 'CPPFLAGS+=%s\n' "${CPPFLAGS}" >> config.mk
+    printf 'CFLAGS+=%s\n' "${CFLAGS}" >> config.mk
+    printf 'LDFLAGS+=%s\n' "${LDFLAGS}" >> config.mk
+    if [ -f "${SRCDEST}/config.h" ]; then
+        cp "${SRCDEST}/config.h" .
     fi
 }
 
 build() {
-    cd "$srcdir/$_pkgname" || exit 1
+    cd "$_pkgname" || exit 1
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-    cd "$srcdir/$_pkgname" || exit 1
+    cd "$_pkgname" || exit 1
     make PREFIX=/usr DESTDIR="$pkgdir" install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
