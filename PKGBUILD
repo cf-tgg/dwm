@@ -1,44 +1,47 @@
 _pkgname=dwm
-pkgname=$_pkgname-larbs-git
-pkgver=6.2.r1888.0ac09e0
+pkgname=$_pkgname-cf-git
+pkgver=6.4.r1888.0ac09e0
 pkgrel=1
-pkgdesc="Luke's build of dwm"
-url=https://github.com/LukeSmithxyz/dwm
+pkgdesc="cf. dwm"
+url=https://github.com/cf-tgg/dwm
 arch=(i686 x86_64)
 license=(MIT)
 makedepends=(git)
 depends=(freetype2 libx11 libxft)
 optdepends=(
-	'dmenu: program launcher'
-	'st: terminal emulator')
+    'dmenu: program launcher'
+    'st: terminal emulator'
+)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(git+https://github.com/LukeSmithxyz/dwm)
-sha256sums=('SKIP')
+source=("git+https://github.com/cf-tgg/dwm" "config.h")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	echo "$(awk '/^VERSION =/ {print $3}' config.mk)".r"$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname" || exit 1
+    version=$(awk '/^VERSION =/ {print $3}' config.mk)
+    count=$(git rev-list --count HEAD)
+    short=$(git rev-parse --short HEAD)
+    printf "%s.r%s.%s\n" "$version" "$count" "$short"
 }
 
 prepare() {
-	cd "$_pkgname"
-	echo "CPPFLAGS+=${CPPFLAGS}" >> config.mk
-	echo "CFLAGS+=${CFLAGS}" >> config.mk
-	echo "LDFLAGS+=${LDFLAGS}" >> config.mk
-	# to use a custom config.h, place it in the package directory
-	if [[ -f ${SRCDEST}/config.h ]]; then
-		cp "${SRCDEST}/config.h" .
-	fi
+    cd "$srcdir/$_pkgname" || exit 1
+    printf 'CPPFLAGS+=%s\n' "$CPPFLAGS" >> config.mk
+    printf 'CFLAGS+=%s\n' "$CFLAGS" >> config.mk
+    printf 'LDFLAGS+=%s\n' "$LDFLAGS" >> config.mk
+    if [ -f "$srcdir/config.h" ]; then
+        cp "$srcdir/config.h" .
+    fi
 }
 
 build() {
-	cd "$_pkgname"
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+    cd "$srcdir/$_pkgname" || exit 1
+    make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-	cd "$_pkgname"
-	make PREFIX=/usr DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/$_pkgname" || exit 1
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
