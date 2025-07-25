@@ -5,3 +5,4 @@ trwicon.c
 dwm$
 *.o
 test.sh
+*.o
