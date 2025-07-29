@@ -2,7 +2,7 @@ README.org
 trwicon.c
 \#*\#
 *\~
-dwm$
+dwm
 *.o
 test.sh
-*.o
+dwm.o
