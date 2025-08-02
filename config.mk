@@ -2,7 +2,7 @@
 VERSION = 6.4
 
 # Install paths
-PREFIX = /usr
+PREFIX = /home/cf/.local
 MANPREFIX = ${PREFIX}/share/man
 
 # Header/library paths

@@ -5,7 +5,7 @@
  *  | (_| |\ V  V /| | | | | |
  *   \__,_| \_/\_/ |_| |_| |_|
  *
- *   Time-stamp: <2025-07-23 23:09:35 cf>
+ *   Time-stamp: <2025-08-02 00:08:04 cf>
  *   Last compiled: 2025-17-23 23:08:42, duration 1.15 s
  *   [Linux 6.15.2-zen1-1-zen x86_64 GNU/Linux]
  */
@@ -89,23 +89,25 @@ typedef struct {
   const void *cmd;
 } Sp;
 
-const char *spcmd1[] = {TERMINAL, "-n", "spterm",  "-g", "100x25", NULL};
-const char *spcmd2[] = {TERMINAL, "-n", "spcalc",  "-f", "monospace:size=50", "-g", "30x3", "-e", "bc",  "-lq", NULL};
+const char *spcmd1[] = {TERMINAL, "-n", "spterm",  "-g", "100x30", NULL};
+const char *spcmd2[] = {TERMINAL, "-n", "spcalc",  "-f", "monospace:size=40", "-g", "30x3", "-e", "bc",  "-lq", NULL};
 const char *spcmd3[] = {TERMINAL, "-n", "spvclp",  "-f", "monospace:size=40", "-g", "100x30", "-e", "seledit", NULL};
 const char *spcmd4[] = {TERMINAL, "-n", "spmpvq",  "-f", "monospace:size=20", "-g", "85x30", "-e",  "mpvqdl", NULL};
 const char *spcmd5[] = {TERMINAL, "-n", "spmpvf",  "-f", "monospace:size=30", "-g", "90x30", "-e",  "mpvqfzf", NULL};
-const char *spcmd6[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame)'", NULL};
-const char *spcmd7[] = {TERMINAL,"-n", "ewwbrw",  "-f", "monospace:size=30", "-g", "90x30", "-e", "ewww-browse", "-d", NULL};
+const char *spcmd6[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"scratch-macs\")'", NULL};
+const char *spcmd7[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"eww-browser\")'", NULL};
+const char *spcmd8[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"email-macs\")'", NULL};
 
 static Sp scratchpads[] = {
     /* name     cmd  */
-    {"spterm", spcmd1},  /* floating term    */
-    {"spcalc", spcmd2},  /* floating calc    */
-    {"spvclp", spcmd3},  /* floating clip    */
-    {"spmpvq", spcmd4},  /* floating mpdl    */
-    {"spmpvf", spcmd5},  /* floating mpfz    */
-    {"spmacs", spcmd6},  /* floating spmacs  */
-    {"ewwbrw", spcmd7},  /* floating ewww    */
+    {"spterm", spcmd1},  /* floating term  */
+    {"spcalc", spcmd2},  /* floating calc  */
+    {"spvclp", spcmd3},  /* xseledit macs  */
+    {"spmpvq", spcmd4},  /* mpdl           */
+    {"spmpvf", spcmd5},  /* mpvqfzf        */
+    {"spmacs", spcmd6},  /* scratch-macs   */
+    {"spewwb", spcmd7},  /* eww-browser    */
+    {"spmu4e", spcmd8},  /* email-macs     */
 };
 
 
@@ -116,7 +118,6 @@ static Sp scratchpads[] = {
 //   &((Keychord){1, {{ControlMask, XK_F10}},              togglescratch,  {.ui = 8}}),  /* orgnote */
 
 /* static const char *tags[] = {"1", "2", "3", "4",  "5", "6", "7", "8 ", "9"}; */
-/* static const char *tags[] = {"", " ", " ",  " ", " ", "󰘧", " ", " ", ""}; */
 static const char *tags[] = {"", "", "󰌀",  "", "", "󰘧", "", "󰑫", ""};
 
 static const Rule rules[] = {
@@ -139,8 +140,9 @@ static const Rule rules[] = {
     {TERMCLASS,       "spvclp",     NULL,           SPTAG(2),   1,          1,             0,       1,          1,          -1},
     {TERMCLASS,       "spmpvq",     NULL,           SPTAG(3),   1,          1,             0,       1,          1,          -1},
     {TERMCLASS,       "spmpvf",     NULL,           SPTAG(4),   1,          1,             0,       1,          1,          -1},
-    {EMACSCLASS,       NULL,        "spmacs",       SPTAG(5),   1,          1,             0,       0,          0,          -1},
-    {EMACSCLASS,       NULL,        "ewww-browser", SPTAG(6),   1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "scratch-macs", SPTAG(5),   1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "eww-browser",  SPTAG(6),   1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "email-macs",   SPTAG(7),   1,          1,             0,       0,          0,          -1},
     {NULL,             NULL,        "Event Tester", 0,          0,          0,             1,       0,          0,          -1},
 };
 
@@ -243,7 +245,7 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{MODKEY | ShiftMask,               XK_0}},           tag,           {.ui = ~0}}),
 
     &((Keychord){1, {{MODKEY,                           XK_grave}},       togglescratch, {.ui = 6}}),
-    &((Keychord){1, {{MODKEY,                       XK_backslash}},       togglescratch, {.ui = 0}}),
+    &((Keychord){1, {{MODKEY,                       XK_backslash}},       togglescratch, {.ui = 7}}),
     &((Keychord){1, {{MODKEY|ShiftMask|ControlMask,         XK_q}},       quit,                {0}}),
     &((Keychord){1, {{MODKEY,                             XK_Tab}},       view,                {0}}),
     &((Keychord){1, {{Mod1Mask,                           XK_Tab}},       view,                {0}}),
@@ -325,7 +327,7 @@ static Keychord *keychords[] = {
 
     /* Scratch Pads */
     &((Keychord){1, {{MODKEY|ShiftMask,     XK_Return}},       togglescratch,  {.ui = 0}}),
-    &((Keychord){1, {{MODKEY,               XK_apostrophe}},   togglescratch,  {.ui = 5}}),
+    &((Keychord){1, {{MODKEY,               XK_apostrophe}},   togglescratch,  {.ui = 5}}),   /* ewww-browser  */
     &((Keychord){1, {{MODKEY|ShiftMask,     XK_c}},            togglescratch,  {.ui = 1}}),
 
     /* mfacts resizing */
@@ -562,6 +564,7 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{ControlMask, XK_F6}},               togglescratch,  {.ui = 4}}),  /* mpvqfzf */
     &((Keychord){1, {{ControlMask, XK_F7}},               togglescratch,  {.ui = 2}}),  /* seledit */
     &((Keychord){1, {{ControlMask, XK_F8}},               togglescratch,  {.ui = 6}}),  /* ewwwbrw */
+    &((Keychord){1, {{ControlMask, XK_F9}},               togglescratch,  {.ui = 5}}),  /* ewwwbrw */
 //    &((Keychord){1, {{ControlMask, XK_F9}},               togglescratch,  {.ui = 7}}),  /* floatmp */
 //    &((Keychord){1, {{ControlMask, XK_F10}},              togglescratch,  {.ui = 8}}),  /* orgnote */
     &((Keychord){1, {{ControlMask, XK_F11}},              spawn,  {.v = (const char *[]){"maimpick", NULL}}}),
