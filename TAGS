@@ -1,0 +1,545 @@
+
+/home/cf/Templates/dwm/vanitygaps.h,340
+static int enablegaps 23,852
+#define LAYOUT 26,911
+#define MASTER 27,928
+#define STACK 28,945
+#define SPLIT_VERTICAL 29,961
+#define SPLIT_HORIZONTAL 30,1019
+#define SPLIT_CENTERED_V 31,1079
+#define SPLIT_CENTERED_H 32,1140
+#define LEFT_TO_RIGHT 33,1203
+#define TOP_TO_BOTTOM 34,1266
+#define MONOCLE 35,1327
+#define GRID 36,1400
+
+/home/cf/Templates/dwm/vanitygaps.c,533
+static int enablegaps 31,1108
+setgaps(35,1164
+togglegaps(50,1405
+defaultgaps(61,1641
+incrgaps(67,1721
+incrigaps(78,1877
+incrogaps(89,2016
+incrohgaps(100,2155
+incrovgaps(111,2286
+incrihgaps(122,2417
+incrivgaps(133,2548
+getgaps(144,2679
+getfacts(167,3303
+bstack(201,4193
+bstackhoriz(242,5199
+centeredmaster(288,6349
+centeredfloatingmaster(373,8917
+deck(430,10484
+fibonacci(475,11566
+dwindle(562,13121
+spiral(568,13169
+gaplessgrid(578,13316
+grid(631,14586
+horizgrid(665,15597
+nrowgrid(730,17101
+tile(787,18265
+
+/home/cf/Templates/dwm/util.h,60
+#define MAX(3,59
+#define MIN(4,101
+#define BETWEEN(5,143
+
+/home/cf/Templates/dwm/util.c,68
+void die(9,157
+size_t split(34,746
+void *ecalloc(ecalloc55,1175
+
+/home/cf/Templates/dwm/transient.c,16
+int main(8,127
+
+/home/cf/Templates/dwm/shiftview.c,34
+shiftview(7,184
+shifttag(35,880
+
+/home/cf/Templates/dwm/dwm.c,11605
+#define BUTTONMASK 55,1660
+#define CLEANMASK(56,1717
+#define GETINC(60,1975
+#define INC(61,2006
+#define INTERSECT(62,2034
+#define ISINC(65,2262
+#define ISVISIBLE(66,2306
+#define PREVSEL 68,2450
+#define LENGTH(69,2471
+#define MOUSEMASK 70,2514
+#define MOD(71,2565
+#define WIDTH(72,2629
+#define HEIGHT(73,2669
+#define NUMTAGS 74,2710
+#define TAGMASK 75,2763
+#define SPTAG(76,2800
+#define SPTAGMASK 77,2846
+#define TEXTW(78,2915
+#define OPAQUE 79,2973
+#define TRUNC(80,2994
+enum { CurNormal,83,3056
+enum { CurNormal, CurResize,83,3056
+enum { CurNormal, CurResize, CurMove,83,3056
+enum { CurNormal, CurResize, CurMove, CurSwal,83,3056
+enum { CurNormal, CurResize, CurMove, CurSwal, CurLast 83,3056
+enum { SchemeNorm,84,3127
+enum { SchemeNorm, SchemeSel 84,3127
+enum { NetSupported,85,3205
+enum { NetSupported, NetWMName,85,3205
+enum { NetSupported, NetWMName, NetWMState,85,3205
+enum { NetSupported, NetWMName, NetWMState, NetWMCheck,85,3205
+enum { NetSupported, NetWMName, NetWMState, NetWMCheck, NetWMFullscreen,85,3205
+       NetActiveWindow,86,3278
+       NetActiveWindow, NetWMWindowType,86,3278
+       NetActiveWindow, NetWMWindowType, NetWMWindowTypeDialog,86,3278
+       NetActiveWindow, NetWMWindowType, NetWMWindowTypeDialog, NetClientList,86,3278
+       NetClientInfo,87,3357
+       NetClientInfo, NetWMWindowsOpacity,87,3357
+       NetClientInfo, NetWMWindowsOpacity, NetLast 87,3357
+enum { WMProtocols,88,3428
+enum { WMProtocols, WMDelete,88,3428
+enum { WMProtocols, WMDelete, WMState,88,3428
+enum { WMProtocols, WMDelete, WMState, WMTakeFocus,88,3428
+enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast 88,3428
+enum { ClkTagBar,89,3510
+enum { ClkTagBar, ClkLtSymbol,89,3510
+enum { ClkTagBar, ClkLtSymbol, ClkStatusText,89,3510
+enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,89,3510
+enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin,89,3510
+enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, ClkRootWin,89,3510
+enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, ClkRootWin, ClkLast 89,3510
+enum { ClientRegular 90,3619
+enum { ClientRegular = 1, ClientSwallowee,90,3619
+enum { ClientRegular = 1, ClientSwallowee, ClientSwallower 90,3619
+  int i;93,3717
+  unsigned int ui;94,3726
+  float f;95,3745
+  const void *v;v96,3756
+} Arg;97,3773
+  unsigned int click;100,3798
+  unsigned int mask;101,3820
+  unsigned int button;102,3841
+  void (*func)func103,3864
+  const Arg arg;104,3896
+} Button;105,3913
+typedef struct Monitor Monitor;107,3924
+typedef struct Client Client;108,3956
+struct Client 109,3986
+  char name[name110,4002
+  float mina,111,4020
+  float mina, maxa;111,4020
+  float cfact;112,4040
+  int x,113,4055
+  int x, y,113,4055
+  int x, y, w,113,4055
+  int x, y, w, h;113,4055
+  int oldx,114,4073
+  int oldx, oldy,114,4073
+  int oldx, oldy, oldw,114,4073
+  int oldx, oldy, oldw, oldh;114,4073
+  int basew,115,4103
+  int basew, baseh,115,4103
+  int basew, baseh, incw,115,4103
+  int basew, baseh, incw, inch,115,4103
+  int basew, baseh, incw, inch, maxw,115,4103
+  int basew, baseh, incw, inch, maxw, maxh,115,4103
+  int basew, baseh, incw, inch, maxw, maxh, minw,115,4103
+  int basew, baseh, incw, inch, maxw, maxh, minw, minh,115,4103
+  int basew, baseh, incw, inch, maxw, maxh, minw, minh, hintsvalid;115,4103
+  int bw,116,4171
+  int bw, oldbw;116,4171
+  unsigned int tags;117,4188
+  int isfixed,118,4209
+  int isfixed, isfloating,118,4209
+  int isfixed, isfloating, isurgent,118,4209
+  int isfixed, isfloating, isurgent, neverfocus,118,4209
+  int isfixed, isfloating, isurgent, neverfocus, oldstate,118,4209
+  int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen,118,4209
+  int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal,118,4209
+  int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow,118,4209
+  int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow, issticky;118,4209
+  pid_t pid;119,4315
+  Client *next;next120,4328
+  Client *snext;snext121,4344
+  double opacity;122,4361
+  double unfocusopacity;123,4379
+  Client *swallowing;swallowing124,4404
+  Client *swer;swer125,4426
+  Monitor *mon;mon126,4485
+  Window win;127,4501
+  unsigned int mod;131,4536
+  KeySym keysym;132,4556
+} Key;133,4587
+  unsigned int n;136,4612
+  const Key keys[keys137,4630
+  void (*func)func138,4651
+  const Arg arg;139,4680
+} Keychord;140,4697
+  const char *symbol;symbol143,4745
+  void (*arrange)arrange144,4767
+} Layout;145,4797
+typedef struct Pertag Pertag;147,4808
+struct Monitor 148,4861
+  char ltsymbol[ltsymbol149,4878
+  float mfact;150,4899
+  int nmaster;151,4914
+  int num;152,4929
+  int by;153,4940
+  int mx,154,4981
+  int mx, my,154,4981
+  int mx, my, mw,154,4981
+  int mx, my, mw, mh;154,4981
+  int wx,155,5021
+  int wx, wy,155,5021
+  int wx, wy, ww,155,5021
+  int wx, wy, ww, wh;155,5021
+  int gappih;156,5062
+  int gappiv;157,5121
+  int gappoh;158,5178
+  int gappov;159,5228
+  unsigned int seltags;160,5276
+  unsigned int sellt;161,5300
+  unsigned int tagset[tagset162,5322
+  int showbar;163,5348
+  int topbar;164,5363
+  Client *clients;clients165,5377
+  Client *sel;sel166,5396
+  Client *stack;stack167,5411
+  Monitor *next;next168,5428
+  Window barwin;169,5445
+  const Layout *lt[lt170,5462
+  Pertag *pertag;pertag171,5485
+  const char *instance;instance176,5545
+  const char *title;title177,5569
+  unsigned int tags;178,5590
+  int isfloating;179,5611
+  double opacity;180,5629
+  double unfocusopacity;181,5647
+  int isterminal;182,5672
+  int noswallow;183,5690
+  int monitor;184,5707
+} Rule;185,5722
+typedef struct Swallow Swallow;187,5731
+struct Swallow 188,5785
+  char inst[inst193,5999
+  char title[title194,6017
+  int decay;199,6215
+  Client *client;client203,6357
+  Swallow *next;next206,6429
+enum resource_type 210,6479
+enum resource_type { STRING 210,6479
+enum resource_type { STRING = 0, INTEGER 210,6479
+enum resource_type { STRING = 0, INTEGER = 1, FLOAT 210,6479
+  char *name;name213,6556
+  enum resource_type type;214,6570
+  void *dst;dst215,6597
+} ResourcePref;216,6610
+static const char broken[broken353,11992
+static char stext[stext354,12031
+static char rawstext[rawstext355,12055
+static int dwmblockssig;356,12082
+pid_t dwmblockspid 357,12107
+static int screen;358,12131
+static int sw,359,12150
+static int sw, sh;359,12150
+static int bh;360,12215
+static int lrpad;361,12251
+static int vp;362,12315
+static int sp;363,12365
+static unsigned int numlockmask 365,12463
+static Atom wmatom[wmatom381,13023
+static Atom wmatom[WMLast], netatom[netatom381,13023
+static int restart 382,13069
+static int running 383,13093
+static Cur *cursor[cursor384,13117
+static Clr **scheme;scheme385,13146
+static Display *dpy;dpy386,13167
+static Drw *drw;drw387,13188
+static Monitor *mons,mons388,13205
+static Monitor *mons, *selmon;selmon388,13205
+static Swallow *swallows;swallows389,13236
+static Window root,390,13262
+static Window root, wmcheckwin;390,13262
+unsigned int currentkey 391,13294
+static int useargb 393,13324
+static Visual *visual;visual394,13348
+static int depth;395,13371
+static Colormap cmap;396,13389
+static xcb_connection_t *xcon;xcon398,13412
+struct Pertag 403,13531
+  unsigned int curtag,404,13547
+  unsigned int curtag, prevtag;404,13547
+  int nmasters[nmasters405,13619
+  float mfacts[mfacts406,13699
+  unsigned int sellts[sellts407,13761
+      *ltidxs[ltidxs409,13840
+  int showbars[showbars410,13918
+  Client *sel[sel411,13992
+struct NumTags 415,14127
+  char limitexceeded[limitexceeded416,14144
+void applyrules(420,14229
+int applysizehints(464,15514
+void arrange(533,17382
+void arrangemon(547,17624
+void attach(554,17874
+void attachstack(559,17954
+void swallow(564,18036
+void unswallow(595,18679
+void buttonpress(618,19208
+void changefocusopacity(683,21045
+void changeunfocusopacity(696,21336
+void checkotherwm(709,21671
+void cleanup(718,21956
+void cleanupmon(744,22611
+void clientmessage(759,22885
+void configure(776,23427
+void configurenotify(793,23790
+void configurerequest(820,24519
+bool is_utf8_continuation(880,26335
+void copyvalidchars(884,26414
+Monitor *createmon(createmon932,28024
+void destroynotify(966,28852
+void detach(997,29607
+void detachstack(1005,29740
+Monitor *dirtomon(dirtomon1019,30004
+void drawbar(1034,30276
+void drawbars(1092,32018
+void enternotify(1099,32107
+void expose(1117,32511
+int fakesignal(1125,32656
+void opacity(1196,34806
+void focus(1205,35171
+void focusin(1241,36200
+void focusmon(1248,36348
+void focusstack(1260,36537
+Atom getatomprop(1274,36872
+int getdwmblockspid(1290,37225
+int getrootptr(1301,37455
+long getstate(1309,37611
+int gettextprop(1326,38010
+void grabbuttons(1348,38588
+void grabkeys(1367,39335
+void incnmaster(1396,40371
+static int isuniquegeom(1403,40554
+void keypress(1413,40887
+void killclient(1467,42298
+void manage(1481,42636
+void mappingnotify(1573,45321
+void maprequest(1581,45478
+void monocle(1614,46398
+void motionnotify(1647,47453
+void movemouse(1662,47750
+Client *nexttiled(nexttiled1720,49521
+void pop(1726,49634
+void pushstack(1733,49716
+void propertynotify(1754,50141
+void quit(1795,51200
+Monitor *recttomon(recttomon1801,51277
+void resize(1813,51505
+void resizeclient(1818,51659
+void resizemouse(1835,52050
+void restack(1892,53907
+void run(1916,54480
+void runAutostart(1925,54675
+void scan(1927,54749
+void sendmon(1952,55521
+void setclientstate(1967,55812
+int sendevent(1974,56023
+void setfocus(1997,56575
+void setfullscreen(2006,56878
+int stackpos(2033,57764
+void setlayout(2067,58602
+void setcfact(2084,59365
+void setmfact(2102,59694
+void setup(2114,59993
+void seturgent(2193,63600
+void showhide(2204,63860
+void sighup(2225,64466
+void sigterm(2230,64527
+void sigdwmblocks(2236,64609
+void sigchld(2252,64956
+void spawn(2259,65119
+void swal(2274,65554
+void swalreg(2347,67827
+void swaldecayby(2382,68758
+void swalmanage(2397,69075
+Swallow *swalmatch(swalmatch2434,70281
+void swalmouse(2460,70927
+void swalrm(2496,71978
+void swalunreg(2516,72339
+void swalstop(2533,72758
+void swalstopsel(2570,73765
+void setclienttagprop(2575,73858
+void tag(2581,74082
+void tagmon(2592,74298
+void togglebar(2598,74420
+void togglefloating(2617,75051
+void togglefullscr(2629,75440
+void togglesticky(2634,75559
+void togglescratch(2641,75699
+void toggletag(2666,76319
+void toggleview(2681,76593
+void unfocus(2719,77798
+void unmanage(2732,78191
+void unmapnotify(2778,79165
+void updatebars(2802,79630
+void updatebarpos(2824,80515
+void updateclientlist(2835,80775
+int updategeom(2850,81168
+void updatenumlockmask(2927,83160
+void updatesizehints(2941,83543
+void updatestatus(2982,84753
+void updatetitle(2990,84946
+void updatewindowtype(2997,85203
+void updatewmhints(3007,85487
+void view(3024,85900
+pid_t winpid(3063,87115
+pid_t getparentprocess(3097,87926
+int isdescprocess(3122,88410
+Client *termforwin(termforwin3129,88525
+Client *swallowingclient(swallowingclient3147,88862
+Client *wintoclient(wintoclient3161,89104
+int wintoclient2(3178,89596
+Monitor *wintomon(wintomon3206,90169
+int xerror(3224,90656
+int xerrordummy(3241,91542
+int xerrorstart(3245,91690
+void xinitvisual(3250,91812
+void zoom(3281,92599
+void xrdb(3291,92826
+void resource_load(3301,93017
+void load_xresources(3334,93731
+int main(3351,94107
+
+/home/cf/Templates/dwm/drw.h,663
+  Cursor cursor;4,76
+} Cur;5,93
+typedef struct Fnt 7,101
+  Display *dpy;dpy8,122
+  unsigned int h;9,138
+  XftFont *xfont;xfont10,156
+  FcPattern *pattern;pattern11,174
+  struct Fnt *next;next12,196
+} Fnt;13,216
+enum { ColFg,15,224
+enum { ColFg, ColBg,15,224
+enum { ColFg, ColBg, ColBorder 15,224
+typedef XftColor Clr;16,281
+  unsigned int w,19,321
+  unsigned int w, h;19,321
+  Display *dpy;dpy20,342
+  int screen;21,358
+  Window root;22,372
+  Visual *visual;visual23,387
+  unsigned int depth;24,405
+  Colormap cmap;25,427
+  Drawable drawable;26,444
+  GC gc;27,465
+  Clr *scheme;scheme28,474
+  Fnt *fonts;fonts29,489
+} Drw;30,503
+
+/home/cf/Templates/dwm/drw.c,1098
+#define UTF_INVALID 13,203
+#define UTF_SIZ 14,230
+static const unsigned char utfbyte[utfbyte16,249
+static const unsigned char utfmask[utfmask17,328
+static const long utfmin[utfmin18,410
+static const long utfmax[utfmax19,480
+static long utf8decodebyte(21,564
+static size_t utf8validate(28,779
+static size_t utf8decode(35,973
+Drw *drw_create(drw_create56,1452
+void drw_resize(73,1998
+void drw_free(82,2244
+static Fnt *xfont_create(xfont_create92,2494
+static void xfont_free(128,3779
+Fnt *drw_fontset_create(drw_fontset_create137,3955
+void drw_fontset_free(153,4292
+void drw_clr_create(160,4404
+Clr *drw_scm_create(drw_scm_create173,4871
+void drw_setfontset(188,5285
+void drw_setscheme(193,5363
+void drw_rect(198,5441
+int drw_text(211,5872
+  enum { nomatches_len 227,6450
+    long codepoint[codepoint230,6500
+    unsigned int idx;231,6535
+void drw_map(367,10686
+unsigned int drw_fontset_getwidth(374,10892
+unsigned int drw_fontset_getwidth_clamp(380,11057
+void drw_font_getexts(387,11279
+Cur *drw_cur_create(drw_cur_create401,11593
+void drw_cur_free(409,11782
+
+/home/cf/Templates/dwm/config.h,2465
+#define TERMINAL 13,349
+#define TERMCLASS 14,371
+#define STATUSBAR 15,394
+#define BROWSER 16,424
+#define EMACS_SERVER_FILE 18,455
+#define EMACS_SOCKET_NAME 19,511
+#define ALTERNATE_EDITOR 20,567
+#define EMACSCLASS 21,595
+#define EMACSCLIENT 22,622
+#define EMACS 23,656
+static unsigned int borderpx 26,703
+static unsigned int snap 27,768
+static unsigned int gappih 29,821
+static unsigned int gappiv 30,894
+static unsigned int gappoh 31,966
+static unsigned int gappov 32,1055
+static int smartgaps 34,1144
+static int swallowfloating 35,1236
+static int showbar 37,1322
+static int topbar 38,1378
+static const int vertpad 40,1439
+static const int sidepad 41,1504
+static const int user_bh 42,1571
+static const char *fonts[fonts44,1699
+static char normfgcolor[normfgcolor62,2750
+static char normbgcolor[normbgcolor63,2793
+static char normbordercolor[normbordercolor64,2836
+static char selfgcolor[selfgcolor66,2880
+static char selbgcolor[selbgcolor67,2924
+static char selbordercolor[selbordercolor68,2968
+static const double defaultopacity 70,3013
+static const double activeopacity 71,3056
+static const double inactiveopacity 72,3159
+static const unsigned int borderalpha 74,3264
+static const unsigned int baralpha 75,3312
+static const char *colors[colors77,3355
+static const unsigned int alphas[alphas83,3606
+  const char *name;name90,3824
+  const void *cmd;cmd91,3844
+} Sp;92,3863
+const char *spcmd1[spcmd194,3870
+const char *spcmd2[spcmd295,3944
+const char *spcmd3[spcmd396,4063
+const char *spcmd4[spcmd497,4181
+const char *spcmd5[spcmd598,4298
+const char *spcmd6[spcmd6101,4460
+const char *spcmd7[spcmd7102,4579
+const char *spcmd8[spcmd8103,4697
+static Sp scratchpads[scratchpads105,4796
+static const char *tags[tags126,5866
+static const Rule rules[rules128,5964
+static const int  swalretroactive 157,9254
+static const int  swaldecay 158,9296
+static const char swalsymbol[swalsymbol159,9338
+static float mfact 162,9404
+static int nmaster 163,9487
+static int resizehints 164,9563
+static const int lockfullscreen 166,9652
+#define FORCE_VSPLIT 168,9740
+static const Layout layouts[layouts171,9857
+#define MODKEY 191,11309
+#define TAGKEYS(192,11333
+#define STACKKEYS(199,11808
+#define SHCMD(212,12478
+static const char *termcmd[termcmd215,12579
+ResourcePref resources[resources218,12679
+static Keychord *keychords[keychords243,13748
+static const Button buttons[buttons644,51984
