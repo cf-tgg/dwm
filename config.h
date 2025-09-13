@@ -5,7 +5,7 @@
  *  | (_| |\ V  V /| | | | | |
  *   \__,_| \_/\_/ |_| |_| |_|
  *
- *   Time-stamp: <2025-09-09 01:27:05 cf>
+ *   Time-stamp: <2025-09-10 03:03:22 cf>
  *   Last compiled: 2025-08-11 15:57:10, duration 1.15 s
  *   Box: [Linux 6.15.2-zen1-1-zen x86_64 GNU/Linux]
  */
@@ -268,7 +268,6 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{MODKEY|ShiftMask|ControlMask,     XK_space}},       spawn,         {.v = (const char *[]){"piper-tgpt", NULL}}}),
     &((Keychord){1, {{MODKEY,                           XK_space}},       spawn,         {.v = (const char *[]){"kb-toggle", NULL}}}),
     &((Keychord){1, {{MODKEY|ControlMask|ShiftMask,     XK_w}},           spawn,         {.v = (const char *[]){TERMINAL, "-e", "sudo", "nmtui", NULL}}}),
-    &((Keychord){1, {{MODKEY,                           XK_r}},           spawn,         {.v = (const char *[]){"sd", NULL}}}),
     &((Keychord){1, {{MODKEY|ShiftMask,                 XK_r}},           spawn,         {.v = (const char *[]){TERMINAL, "-e", "htop", NULL}}}),
     &((Keychord){1, {{MODKEY|ControlMask|ShiftMask,     XK_F12}},         spawn,         {.v = (const char *[]){"dx2x", NULL}}}),   /* Super+Ctrl+Shift+F12 */
 
@@ -339,9 +338,9 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{MODKEY,               XK_Return}},       spawn,          {.v = termcmd}}),
 
     /* Scratch Pads */
+    &((Keychord){1, {{MODKEY,               XK_r}},            togglescratch,  {.ui = 0}}),
     &((Keychord){1, {{MODKEY|ShiftMask,     XK_Return}},       togglescratch,  {.ui = 0}}),
     &((Keychord){1, {{MODKEY|ShiftMask,     XK_c}},            togglescratch,  {.ui = 1}}),
-
     /* mfacts resizing */
     &((Keychord){1, {{MODKEY, XK_h}},                          setmfact,       {.f = -0.05}}),
     &((Keychord){1, {{MODKEY, XK_l}},                          setmfact,       {.f = +0.05}}),
