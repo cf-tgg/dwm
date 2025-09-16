@@ -5,7 +5,7 @@
  *  | (_| |\ V  V /| | | | | |
  *   \__,_| \_/\_/ |_| |_| |_|
  *
- *   Time-stamp: <2025-09-10 03:03:22 cf>
+ *   Time-stamp: <2025-09-16 14:38:45 cf>
  *   Last compiled: 2025-08-11 15:57:10, duration 1.15 s
  *   Box: [Linux 6.15.2-zen1-1-zen x86_64 GNU/Linux]
  */
@@ -104,27 +104,40 @@ const char *spcmd7[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/to
 const char *spcmd8[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"elfeed-frame\")'", NULL};
 const char *spcmd9[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"minibuffer\")'",   NULL};
 const char *spcmd10[] = {"xcurzui", NULL};
+const char *spcmd11[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc1\")'",  NULL};
+const char *spcmd12[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc2\")'",  NULL};
+const char *spcmd13[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc3\")'",  NULL};
+const char *spcmd14[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc4\")'",  NULL};
+const char *spcmd15[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc5\")'",  NULL};
+const char *spcmd16[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc6\")'",  NULL};
+const char *spcmd17[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc7\")'",  NULL};
+const char *spcmd18[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc8\")'",  NULL};
+const char *spcmd19[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc9\")'",  NULL};
+const char *spcmd20[] = {EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(spmacs/toggle-frame \"Emc10\")'",  NULL};
 
 static Sp scratchpads[] = {
     /* name     cmd  */
-    {"spterm",  spcmd1},  /* floating term  */
-    {"spcalc",  spcmd2},  /* floating calc  */
-    {"spvclp",  spcmd3},  /* xseledit macs  */
-    {"spmpvq",  spcmd4},  /* mpdl           */
-    {"spmpvf",  spcmd5},  /* mpvqfzf        */
-    {"spmacs",  spcmd6},  /* scratch-macs   */
-    {"spewwb",  spcmd7},  /* eww-browser    */
-    {"spfeed",  spcmd8},  /* elfeed-frame   */
-    {"spmini",  spcmd9},  /* minibuffer     */
-    {"spxmag", spcmd10},  /* xcurzui        */
+    {"spterm",  spcmd1},   /* floating term  */
+    {"spcalc",  spcmd2},   /* floating calc  */
+    {"spvclp",  spcmd3},   /* xseledit macs  */
+    {"spmpvq",  spcmd4},   /* mpdl           */
+    {"spmpvf",  spcmd5},   /* mpvqfzf        */
+    {"spmacs",  spcmd6},   /* scratch-macs   */
+    {"spewwb",  spcmd7},   /* eww-browser    */
+    {"spfeed",  spcmd8},   /* elfeed-frame   */
+    {"spmini",  spcmd9},   /* minibuffer     */
+    {"spxmag",  spcmd10},  /* xcurzui        */
+    {"spemc1",  spcmd11},  /* Emc1           */
+    {"spemc2",  spcmd12},  /* Emc2           */
+    {"spemc3",  spcmd13},  /* Emc3           */
+    {"spemc4",  spcmd14},  /* Emc4           */
+    {"spemc5",  spcmd15},  /* Emc5           */
+    {"spemc6",  spcmd16},  /* Emc6           */
+    {"spemc7",  spcmd17},  /* Emc7           */
+    {"spemc8",  spcmd18},  /* Emc8           */
+    {"spemc9",  spcmd19},  /* Emc9           */
+    {"spemc0",  spcmd20},  /* Emc0          */
 };
-
-
-//   &((Keychord){1, {{ControlMask, XK_F6}},               togglescratch,  {.ui = 5}}),  /* mpvqfzf */
-//   &((Keychord){1, {{ControlMask, XK_F7}},               togglescratch,  {.ui = 3}}),  /* seledit */
-//   &((Keychord){1, {{ControlMask, XK_F8}},               togglescratch,  {.ui = 6}}),  /* ewwwbrw */
-//   &((Keychord){1, {{ControlMask, XK_F9}},               togglescratch,  {.ui = 7}}),  /* floatmp */
-//   &((Keychord){1, {{ControlMask, XK_F10}},              togglescratch,  {.ui = 8}}),  /* orgnote */
 
 /* static const char *tags[] = {"1", "2", "3", "4",  "5", "6", "7", "8 ", "9"}; */
 static const char *tags[] = {"", "", "󰌀",  "", "", "󰘧", "", "󰑫", ""};
@@ -154,6 +167,16 @@ static const Rule rules[] = {
     {EMACSCLASS,       NULL,        "elfeed-frame", SPTAG(7),   1,          1,             0,       0,          0,          -1},
     {EMACSCLASS,       NULL,        "minibuffer",   SPTAG(8),   1,          1,             0,       0,          0,          -1},
     {NULL,             NULL,        "Xmagnify",     SPTAG(9),   1,        0.1,             1,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc1",         SPTAG(10),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc2",         SPTAG(11),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc3",         SPTAG(12),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc4",         SPTAG(13),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc5",         SPTAG(14),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc6",         SPTAG(15),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc7",         SPTAG(16),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc8",         SPTAG(17),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc9",         SPTAG(18),  1,          1,             0,       0,          0,          -1},
+    {EMACSCLASS,       NULL,        "Emc0",         SPTAG(19),  1,          1,             0,       0,          0,          -1},
     {NULL,             NULL,        "Event Tester", 0,          0,          0,             1,       0,          0,          -1},
 };
 
@@ -272,15 +295,25 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{MODKEY|ControlMask|ShiftMask,     XK_F12}},         spawn,         {.v = (const char *[]){"dx2x", NULL}}}),   /* Super+Ctrl+Shift+F12 */
 
     /* Emacs Frames */
-    /*  &((Keychord){1, {{MODKEY|ShiftMask,                XK_e}},           spawn,          SHCMD("emacsclient -c -n --alternate-editor=\"\" --socket-name=\"/run/user/1000/emacs/server\"")}), */
     &((Keychord){1, {{MODKEY|ControlMask,               XK_e}},          spawn,           {.v = (const char *[]){EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-c", "-n", "--alternate-editor=", "-f", "scratch-buffer", NULL}}}),
-    &((Keychord){1, {{MODKEY|ShiftMask,                 XK_e}},          togglescratch,   {.ui = 2}}), /* seledit      */
-    &((Keychord){1, {{MODKEY,                           XK_e}},          togglescratch,   {.ui = 5}}), /* scratch-macs */
-    &((Keychord){1, {{MODKEY,                       XK_grave}},          togglescratch,   {.ui = 6}}), /* eww-browser  */
-    &((Keychord){1, {{MODKEY,                   XK_backslash}},          togglescratch,   {.ui = 7}}), /* elfeed-frame */
-    &((Keychord){1, {{MODKEY,                   XK_apostrophe}},         togglescratch,   {.ui = 8}}), /* minibuffer   */
-    &((Keychord){1, {{MODKEY|ShiftMask,                  XK_z}},         togglescratch,   {.ui = 9}}), /* xcurzui      */
-    /* &((Keychord){1, {{ControlMask|Mod1Mask, XK_e}},      spawn,  {.v = (const char *[]){"spwnedit", NULL}}}), */
+    &((Keychord){1, {{MODKEY|ShiftMask,                 XK_e}},          togglescratch,   {.ui =  2}}), /* seledit      */
+    &((Keychord){1, {{MODKEY,                           XK_e}},          togglescratch,   {.ui =  5}}), /* scratch-macs */
+    &((Keychord){1, {{MODKEY,                       XK_grave}},          togglescratch,   {.ui =  6}}), /* eww-browser  */
+    &((Keychord){1, {{MODKEY,                   XK_backslash}},          togglescratch,   {.ui =  7}}), /* elfeed-frame */
+    &((Keychord){1, {{MODKEY,                   XK_apostrophe}},         togglescratch,   {.ui =  8}}), /* minibuffer   */
+    &((Keychord){1, {{MODKEY|ShiftMask,                  XK_z}},         togglescratch,   {.ui =  9}}), /* xcurzui      */
+
+    /* Emacs ScratchPads */
+    &((Keychord){1, {{Mod1Mask, XK_F1}},   togglescratch,  {.ui = 10}}),
+    &((Keychord){1, {{Mod1Mask, XK_F2}},   togglescratch,  {.ui = 11}}),
+    &((Keychord){1, {{Mod1Mask, XK_F3}},   togglescratch,  {.ui = 12}}),
+    &((Keychord){1, {{Mod1Mask, XK_F4}},   togglescratch,  {.ui = 13}}),
+    &((Keychord){1, {{Mod1Mask, XK_F5}},   togglescratch,  {.ui = 14}}),
+    &((Keychord){1, {{Mod1Mask, XK_F6}},   togglescratch,  {.ui = 15}}),
+    &((Keychord){1, {{Mod1Mask, XK_F7}},   togglescratch,  {.ui = 16}}),
+    &((Keychord){1, {{Mod1Mask, XK_F8}},   togglescratch,  {.ui = 17}}),
+    &((Keychord){1, {{Mod1Mask, XK_F9}},   togglescratch,  {.ui = 18}}),
+    &((Keychord){1, {{Mod1Mask, XK_F11}},  togglescratch,  {.ui = 19}}),
 
     /* WirePlumber Default Sink Volume Control */
     &((Keychord){1, {{MODKEY,                          XK_minus}},       spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)")}),
@@ -324,41 +357,42 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{MODKEY|ControlMask|ShiftMask, XK_Return}}, spawn,  {.v = (const char *[]){"dmenurecord", NULL}}}),
 
     /* toggle fullscreen toggles bar too */
-    &((Keychord){1, {{MODKEY|ControlMask, XK_space}},          zoom,           {0}}),
-    &((Keychord){1, {{MODKEY,                 XK_F12}},        togglefullscr,  {0}}),
-    &((Keychord){1, {{MODKEY,                 XK_f}},          togglefullscr,  {0}}),
-    &((Keychord){1, {{MODKEY,                 XK_f}},          togglebar,      {0}}),
-    &((Keychord){1, {{MODKEY,                 XK_b}},          togglebar,      {0}}),
+    &((Keychord){1, {{MODKEY|ControlMask,   XK_space}},        zoom,           {0}}),
+    &((Keychord){1, {{MODKEY,               XK_F12}},          togglefullscr,  {0}}),
+    &((Keychord){1, {{MODKEY,               XK_f}},            togglefullscr,  {0}}),
+    &((Keychord){1, {{MODKEY,               XK_f}},            togglebar,      {0}}),
+    &((Keychord){1, {{MODKEY,               XK_b}},            togglebar,      {0}}),
 
     /* more toggles */
-    &((Keychord){1, {{MODKEY,               XK_s}},            togglesticky,   {0}}),
-    &((Keychord){1, {{MODKEY,               XK_a}},            togglegaps,     {0}}),
-    &((Keychord){1, {{MODKEY|ShiftMask,     XK_a}},            defaultgaps,    {0}}),
-    &((Keychord){1, {{MODKEY|ShiftMask,     XK_space}},        togglefloating, {0}}),
-    &((Keychord){1, {{MODKEY,               XK_Return}},       spawn,          {.v = termcmd}}),
+    &((Keychord){1, {{MODKEY,               XK_s}},         togglesticky,   {0}}),
+    &((Keychord){1, {{MODKEY,               XK_a}},         togglegaps,     {0}}),
+    &((Keychord){1, {{MODKEY|ShiftMask,     XK_a}},         defaultgaps,    {0}}),
+    &((Keychord){1, {{MODKEY|ShiftMask,     XK_space}},     togglefloating, {0}}),
+    &((Keychord){1, {{MODKEY,               XK_Return}},    spawn,          {.v = termcmd}}),
 
     /* Scratch Pads */
-    &((Keychord){1, {{MODKEY,               XK_r}},            togglescratch,  {.ui = 0}}),
-    &((Keychord){1, {{MODKEY|ShiftMask,     XK_Return}},       togglescratch,  {.ui = 0}}),
-    &((Keychord){1, {{MODKEY|ShiftMask,     XK_c}},            togglescratch,  {.ui = 1}}),
+    &((Keychord){1, {{MODKEY,               XK_r}},         togglescratch,  {.ui = 0}}),
+    &((Keychord){1, {{MODKEY|ShiftMask,     XK_Return}},    togglescratch,  {.ui = 0}}),
+    &((Keychord){1, {{MODKEY|ShiftMask,     XK_c}},         togglescratch,  {.ui = 1}}),
+
     /* mfacts resizing */
-    &((Keychord){1, {{MODKEY, XK_h}},                          setmfact,       {.f = -0.05}}),
-    &((Keychord){1, {{MODKEY, XK_l}},                          setmfact,       {.f = +0.05}}),
+    &((Keychord){1, {{MODKEY, XK_h}},                       setmfact,       {.f = -0.05}}),
+    &((Keychord){1, {{MODKEY, XK_l}},                       setmfact,       {.f = +0.05}}),
 
     /* cfacts resizing */
-    &((Keychord){1, {{MODKEY|ShiftMask, XK_h}},                setcfact,       {.f = +0.05}}),
-    &((Keychord){1, {{MODKEY|ShiftMask, XK_l}},                setcfact,       {.f = -0.05}}),
-    &((Keychord){1, {{MODKEY|ShiftMask, XK_o}},                setcfact,       {.f = 0.00}}),
+    &((Keychord){1, {{MODKEY|ShiftMask, XK_h}},             setcfact,       {.f = +0.05}}),
+    &((Keychord){1, {{MODKEY|ShiftMask, XK_l}},             setcfact,       {.f = -0.05}}),
+    &((Keychord){1, {{MODKEY|ShiftMask, XK_o}},             setcfact,       {.f = 0.00}}),
 
     /* Gap resizing */
-    &((Keychord){1, {{MODKEY,               XK_z}},            incrgaps,       {.i = -1}}),
-    &((Keychord){1, {{MODKEY,               XK_x}},            incrgaps,       {.i = +1}}),
+    &((Keychord){1, {{MODKEY,               XK_z}},         incrgaps,       {.i = -1}}),
+    &((Keychord){1, {{MODKEY,               XK_x}},         incrgaps,       {.i = +1}}),
 
     /* Workspaces shifting */
-    &((Keychord){1, {{MODKEY,                     XK_g}},    shiftview,        {.i = -1}}),
-    &((Keychord){1, {{MODKEY|ShiftMask,           XK_g}},    shifttag,         {.i = -1}}),
-    &((Keychord){1, {{MODKEY,             XK_semicolon}},    shiftview,        {.i = 1}}),
-    &((Keychord){1, {{MODKEY|ShiftMask,   XK_semicolon}},    shifttag,         {.i = 1}}),
+    &((Keychord){1, {{MODKEY,                     XK_g}},   shiftview,        {.i = -1}}),
+    &((Keychord){1, {{MODKEY,             XK_semicolon}},   shiftview,        {.i = 1}}),
+    &((Keychord){1, {{MODKEY|ShiftMask,           XK_g}},   shifttag,         {.i = -1}}),
+    &((Keychord){1, {{MODKEY|ShiftMask,   XK_semicolon}},   shifttag,         {.i = 1}}),
 
     /* Focus and unfocused focused window transparency kb control
      * also bound to <[super]|[super+shift]> + <MouseScroll [Up]|[Down]> */
@@ -646,34 +680,67 @@ static Keychord *keychords[] = {
 
 static const Button buttons[] = {
 /* button definitions click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
-#ifndef __OpenBSD__
-    /* click         event mask       button          function                argument */
-    { ClkWinTitle,   0,               Button2,        zoom,                   {0}},
-    { ClkStatusText, 0,               Button1,        sigdwmblocks,           {.i = 1}},
-    { ClkStatusText, 0,               Button2,        sigdwmblocks,           {.i = 2}},
-    { ClkStatusText, 0,               Button3,        sigdwmblocks,           {.i = 3}},
-    { ClkStatusText, 0,               Button4,        sigdwmblocks,           {.i = 4}},
-    { ClkStatusText, 0,               Button5,        sigdwmblocks,           {.i = 5}},
-    { ClkStatusText, ShiftMask,       Button1,        sigdwmblocks,           {.i = 6}},
-#endif
-    { ClkStatusText, ShiftMask,       Button3,        spawn,                  SHCMD(TERMINAL " -e $EDITOR ~/Templates/dwmblocks/blocks.h")},
-    { ClkClientWin,  MODKEY,          Button1,        movemouse,              {0}},
-    { ClkClientWin,  MODKEY,          Button2,        togglefloating,         {0}},
-    { ClkClientWin,  MODKEY,          Button3,        resizemouse,            {0}},
-    /* { ClkClientWin,  MODKEY,          Button2,        defaultgaps,            {0}}, */
-    /* { ClkClientWin, MODKEY,           Button4,        incrgaps,               {.i = +1} }, */
-    /* { ClkClientWin, MODKEY,           Button5,        incrgaps,               {.i = -1} }, */
-    { ClkClientWin, MODKEY,           Button4,        changefocusopacity,     {.f = +0.025}},
-    { ClkClientWin, MODKEY,           Button5,        changefocusopacity,     {.f = -0.025}},
-    { ClkClientWin, MODKEY|ShiftMask, Button4,        changeunfocusopacity,   {.f = +0.025}},
-    { ClkClientWin, MODKEY|ShiftMask, Button5,        changeunfocusopacity,   {.f = -0.025}},
-    { ClkClientWin, MODKEY|ShiftMask, Button1,        swalmouse,              {0}},
     //  { ClkClientWin, ControlMask,      Button1,        spawn,                  SHCMD("win_icons_align")},
-    { ClkTagBar,    0,                Button1,        view,                   {0}},
-    { ClkTagBar,    0,                Button3,        toggleview,             {0}},
-    { ClkTagBar,    MODKEY,           Button1,        tag,                    {0}},
-    { ClkTagBar,    MODKEY,           Button3,        toggletag,              {0}},
-    { ClkTagBar,    0,                Button4,        shiftview,              {.i = -1}},
-    { ClkTagBar,    0,                Button5,        shiftview,              {.i =  1}},
-    { ClkRootWin,   0,                Button2,        togglebar,              {0}},
+    /* { ClkClientWin,  MODKEY,          Button2,        defaultgaps,            {0}}, */
+#ifndef __OpenBSD__
+    /* click         event mask              button          function                argument */
+    { ClkWinTitle,   0,                      Button2,        zoom,                   {0}},
+    { ClkStatusText, 0,                      Button1,        sigdwmblocks,           {.i = 1}},
+    { ClkStatusText, 0,                      Button2,        sigdwmblocks,           {.i = 2}},
+    { ClkStatusText, 0,                      Button3,        sigdwmblocks,           {.i = 3}},
+    { ClkStatusText, 0,                      Button4,        sigdwmblocks,           {.i = 4}},
+    { ClkStatusText, 0,                      Button5,        sigdwmblocks,           {.i = 5}},
+    { ClkStatusText, ShiftMask,              Button1,        sigdwmblocks,           {.i = 6}},
+#endif
+    { ClkWinTitle,   0,                      Button1,        zoom,                   {0}},
+    { ClkWinTitle,   0,                      Button2,        togglefloating,         {0}},
+    { ClkWinTitle,   0,                      Button3,        togglesticky,           {0}},
+    { ClkWinTitle,   0,                      Button4,        spawn,                  SHCMD("xdotool key --clearmodifiers super+j")},
+    { ClkWinTitle,   0,                      Button5,        spawn,                  SHCMD("xdotool key --clearmodifiers super+k")},
+    { ClkWinTitle,   Mod1Mask,               Button4,        spawn,                  SHCMD("xdotool key --clearmodifiers super+shift+j")},
+    { ClkWinTitle,   Mod1Mask,               Button5,        spawn,                  SHCMD("xdotool key --clearmodifiers super+shift+k")},
+    { ClkWinTitle,   ControlMask,            Button1,        togglegaps,             {0}},
+    { ClkWinTitle,   ControlMask,            Button2,        shiftview,              {0}},
+    { ClkWinTitle,   ControlMask,            Button3,        spawn,                  {.v = (const char *[]){"sysact", NULL}}},
+    { ClkWinTitle,   ControlMask,            Button4,        incrgaps,               {.i = -1}},
+    { ClkWinTitle,   ControlMask,            Button5,        incrgaps,               {.i = 1}},
+    { ClkLtSymbol,   0,                      Button1,        spawn,                  SHCMD(TERMINAL " -e fzf-cmd-menu")},
+    { ClkLtSymbol,   0,                      Button2,        spawn,                  SHCMD("ewww-browse -d")},
+    { ClkLtSymbol,   0,                      Button3,        spawn,                  {.v = (const char *[]){ EMACSCLIENT, "-s", EMACS_SOCKET_NAME, "-e", "'(cf-window-popup-org-capture)'", NULL}}},
+    { ClkStatusText, ShiftMask,              Button3,        spawn,                  SHCMD(TERMINAL " -e $EDITOR ~/Templates/dwmblocks/blocks.h")},
+    { ClkClientWin,  MODKEY,                 Button1,        movemouse,              {0}},
+    { ClkClientWin,  MODKEY,                 Button2,        togglefloating,         {0}},
+    { ClkClientWin,  MODKEY,                 Button3,        resizemouse,            {0}},
+    { ClkClientWin,  ShiftMask,              Button1,        resizemouse,            {.i = 1}},
+    { ClkClientWin,  ControlMask,            Button1,        movemouse,              {0}},
+    { ClkClientWin,  ControlMask|ShiftMask,  Button1,        resizemouse,            {0}},
+    { ClkClientWin,  ShiftMask,              Button3,        shifttag,               {.i = 1}},
+    { ClkClientWin,  ControlMask,            Button2,        togglefloating,         {0}},
+    { ClkClientWin,  ControlMask,            Button3,        zoom,                   {0}},
+    { ClkClientWin,  ControlMask,            Button4,        setmfact,               {.f = -0.05}},
+    { ClkClientWin,  ControlMask,            Button5,        setmfact,               {.f = +0.05}},
+    { ClkClientWin,  Mod1Mask|ShiftMask,     Button4,        spawn,                  SHCMD("xdotool key --clearmodifiers super+shift+j")},
+    { ClkClientWin,  Mod1Mask|ShiftMask,     Button5,        spawn,                  SHCMD("xdotool key --clearmodifiers super+shift+k")},
+    { ClkClientWin,  Mod1Mask|ControlMask,   Button4,        setcfact,               {.f = -0.05}},
+    { ClkClientWin,  Mod1Mask|ControlMask,   Button5,        setcfact,               {.f = +0.05}},
+    { ClkClientWin,  MODKEY,                 Button4,        changefocusopacity,     {.f = -0.025}},
+    { ClkClientWin,  MODKEY,                 Button5,        changefocusopacity,     {.f = +0.025}},
+    { ClkClientWin,  MODKEY|ShiftMask,       Button4,        changeunfocusopacity,   {.f = +0.025}},
+    { ClkClientWin,  MODKEY|ShiftMask,       Button5,        changeunfocusopacity,   {.f = -0.025}},
+    { ClkClientWin,  MODKEY|ShiftMask,       Button1,        swalmouse,              {0}},
+    { ClkClientWin,  MODKEY|ControlMask,     Button1,        shifttag,               {.i = -1}},
+    { ClkClientWin,  MODKEY|ControlMask,     Button2,        shifttag,               {.i = 1}},
+    { ClkTagBar,     0,                      Button1,        view,                   {0}},
+    { ClkTagBar,     0,                      Button3,        toggleview,             {0}},
+    { ClkTagBar,     MODKEY,                 Button1,        tag,                    {0}},
+    { ClkTagBar,     MODKEY,                 Button3,        toggletag,              {0}},
+    { ClkTagBar,     0,                      Button4,        shiftview,              {.i = -1}},
+    { ClkTagBar,     0,                      Button5,        shiftview,              {.i =  1}},
+    { ClkRootWin,    0,                      Button1,        togglescratch,          {.ui = 0}},
+    { ClkRootWin,    0,                      Button2,        togglebar,              {0}},
+    { ClkRootWin,    0,                      Button3,        spawn,                  SHCMD("eaglemode")},
+    { ClkRootWin,    MODKEY,                 Button4,        spawn,                  SHCMD("walfeh -prev")},
+    { ClkRootWin,    MODKEY,                 Button5,        spawn,                  SHCMD("walfeh -next")},
+    { ClkRootWin,    ShiftMask,              Button1,        shiftview,              {.i =  1}},
+    { ClkRootWin,    ShiftMask,              Button2,        shiftview,              {.i = -1}},
 };
